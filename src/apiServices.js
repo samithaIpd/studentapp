@@ -1,5 +1,5 @@
-import axios from 'axios';
-import BASE_URL from './config';
+import axios from "axios";
+import BASE_URL from "./config";
 
 const apiService = {
   get: async (endpoint) => {
@@ -7,27 +7,35 @@ const apiService = {
       const response = await axios.get(`${BASE_URL}/${endpoint}`);
       return response.data;
     } catch (error) {
-      throw new Error('Error fetching data: ' + error.message);
+      throw new Error("Error fetching data: " + error.message);
     }
   },
 
-  post: async (endpoint, data) => {
+  post: async (endpoint, params = {}) => {
+    const urlParams = new URLSearchParams(Object.entries(params));
+    const fullPostUrl = `${BASE_URL}/${endpoint}?${urlParams.toString()}`;
     try {
-      await axios.post(`${BASE_URL}/${endpoint}`, data, {
+      await axios.post(fullPostUrl, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
     } catch (error) {
-      throw new Error('Error posting data: ' + error.message);
+      throw new Error("Error posting data: " + error.message);
     }
   },
 
-  put: async (endpoint, data) => {
+  put: async (endpoint, params = {}) => {
+    const urlParams = new URLSearchParams(Object.entries(params));
+    const fullPutUrl = `${BASE_URL}/${endpoint}?${urlParams.toString()}`;
     try {
-      await axios.put(`${BASE_URL}/${endpoint}`, data);
+      await axios.put(fullPutUrl, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } catch (error) {
-      throw new Error('Error updating data: ' + error.message);
+      throw new Error("Error updating data: " + error.message);
     }
   },
 
@@ -35,9 +43,9 @@ const apiService = {
     try {
       await axios.delete(`${BASE_URL}/${endpoint}`);
     } catch (error) {
-      throw new Error('Error deleting data: ' + error.message);
+      throw new Error("Error deleting data: " + error.message);
     }
-  }
+  },
 };
 
 export default apiService;

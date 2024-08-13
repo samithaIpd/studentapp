@@ -62,8 +62,10 @@ function StudentDetails() {
       return;
     }
 
+    const student = {name: studentName, course: course };
+
     try {
-      await updateStudent(selectedStudentId, studentName, course);
+      await updateStudent(selectedStudentId,student);
       alert("Student updated succesfully!");
       setStudentName("");
       setCourse("");
