@@ -27,9 +27,9 @@ function StudentDetails() {
     }
 
     try {
-      const url = `https://localhost:7029/AddStudent?name=${encodeURIComponent(
+      const url = `https://localhost:7029/AddStudent?name=${studentName}
         studentName
-      )}&course=${encodeURIComponent(course)}`;
+      )}&course=${course}`;
       await axios.post(url);
 
       alert("Student Registration Successful");
