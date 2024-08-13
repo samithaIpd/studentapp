@@ -1,4 +1,4 @@
-import StudentDetails from "./components/studentDetail";
+import StudentDetails from './components/studentDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
