@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import StudentTable from "./studentTable";
-import  StudentForm from './studentForm'
+import StudentForm from "./studentForm";
 import {
   getStudents,
   addStudent,
@@ -33,7 +33,7 @@ function StudentDetails() {
       return;
     }
 
-    const student = { id:0 ,name: studentName, course: course };
+    const student = { name: studentName, course: course };
 
     try {
       await addStudent(student);

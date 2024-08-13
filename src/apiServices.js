@@ -13,6 +13,7 @@ const apiService = {
 
   post: async (endpoint, data) => {
     try {
+      console.log('Posting data to:', endpoint, data); // Debugging line
       await axios.post(`${BASE_URL}/${endpoint}`, data, {
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +23,7 @@ const apiService = {
       throw new Error('Error posting data: ' + error.message);
     }
   },
-
+  
   put: async (endpoint, data) => {
     try {
       await axios.put(`${BASE_URL}/${endpoint}`, data);
