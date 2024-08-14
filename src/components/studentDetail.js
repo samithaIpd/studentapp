@@ -33,7 +33,7 @@ function StudentDetails() {
       return;
     }
 
-    const student = { id:0 ,name: studentName, course: course };
+    const student = {name: studentName, course: course };
 
     try {
       await addStudent(student);
